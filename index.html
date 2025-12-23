@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>דיווח שעות עבודה מהבית</title>
     <style>
+        :root {
+            --bg-primary: white;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #e9ecef;
+            --text-primary: #333;
+            --text-secondary: #6c757d;
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --modal-bg: rgba(0, 0, 0, 0.5);
+            --scrollbar-track: #f1f1f1;
+            --scrollbar-thumb: #667eea;
+            --scrollbar-thumb-hover: #764ba2;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --bg-tertiary: #0f3460;
+            --text-primary: #eaeaea;
+            --text-secondary: #b0b0b0;
+            --border-color: #2a2a3e;
+            --shadow-color: rgba(0, 0, 0, 0.6);
+            --modal-bg: rgba(0, 0, 0, 0.8);
+            --scrollbar-track: #16213e;
+            --scrollbar-thumb: #667eea;
+            --scrollbar-thumb-hover: #764ba2;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,16 +45,22 @@
             min-height: 100vh;
             padding: 20px;
             direction: rtl;
+            transition: background 0.3s ease;
+        }
+
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
+            background: var(--bg-primary);
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px var(--shadow-color);
             overflow: hidden;
             animation: fadeIn 0.5s ease-in;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
 
         @keyframes fadeIn {
@@ -72,6 +106,57 @@
             opacity: 0.9;
         }
 
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2em;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(20deg);
+        }
+
+        .login-theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(102, 126, 234, 0.2);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2em;
+            color: #667eea;
+        }
+
+        [data-theme="dark"] .login-theme-toggle {
+            background: rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+            color: #eaeaea;
+        }
+
+        .login-theme-toggle:hover {
+            background: rgba(102, 126, 234, 0.3);
+            transform: rotate(20deg);
+        }
+
         .btn-logout {
             padding: 8px 20px;
             font-size: 0.85em;
@@ -89,6 +174,8 @@
 
         .content {
             padding: 30px;
+            background: var(--bg-primary);
+            transition: background 0.3s ease;
         }
 
         /* Login Screen */
@@ -108,6 +195,15 @@
             margin: 0 auto;
         }
 
+        .login-title {
+            color: #667eea;
+            transition: color 0.3s ease;
+        }
+
+        [data-theme="dark"] .login-title {
+            color: #8fa3ff;
+        }
+
         .login-tabs {
             display: flex;
             gap: 10px;
@@ -118,12 +214,16 @@
         .tab-btn {
             padding: 12px 30px;
             font-size: 1em;
-            background: #f8f9fa;
+            background: var(--bg-secondary);
             color: #667eea;
-            border: 2px solid #e9ecef;
+            border: 2px solid var(--border-color);
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .tab-btn {
+            color: #8fa3ff;
         }
 
         .tab-btn.active {
@@ -140,17 +240,28 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: #333;
+            color: var(--text-primary);
             font-weight: 600;
+            transition: color 0.3s ease;
         }
 
         .form-group input {
             width: 100%;
             padding: 12px 15px;
             font-size: 1em;
-            border: 2px solid #e9ecef;
+            border: 2px solid var(--border-color);
             border-radius: 10px;
             transition: all 0.3s ease;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .form-group input[type="datetime-local"] {
+            color-scheme: light;
+        }
+
+        [data-theme="dark"] .form-group input[type="datetime-local"] {
+            color-scheme: dark;
         }
 
         .form-group input:focus {
@@ -295,12 +406,12 @@
         }
 
         .stat-card {
-            background: #f8f9fa;
+            background: var(--bg-secondary);
             padding: 20px;
             border-radius: 15px;
             text-align: center;
-            border: 2px solid #e9ecef;
-            transition: transform 0.3s ease;
+            border: 2px solid var(--border-color);
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
         }
 
         .stat-card:hover {
@@ -309,14 +420,20 @@
 
         .stat-label {
             font-size: 0.9em;
-            color: #6c757d;
+            color: var(--text-secondary);
             margin-bottom: 10px;
+            transition: color 0.3s ease;
         }
 
         .stat-value {
             font-size: 2em;
             font-weight: bold;
             color: #667eea;
+            transition: color 0.3s ease;
+        }
+
+        [data-theme="dark"] .stat-value {
+            color: #8fa3ff;
         }
 
         .sessions {
@@ -324,9 +441,10 @@
         }
 
         .sessions h2 {
-            color: #333;
+            color: var(--text-primary);
             margin-bottom: 20px;
             font-size: 1.5em;
+            transition: color 0.3s ease;
         }
 
         .session-list {
@@ -335,7 +453,7 @@
         }
 
         .session-item {
-            background: #f8f9fa;
+            background: var(--bg-secondary);
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 15px;
@@ -347,7 +465,7 @@
         }
 
         .session-item:hover {
-            background: #e9ecef;
+            background: var(--bg-tertiary);
             transform: translateX(-5px);
         }
 
@@ -361,13 +479,15 @@
 
         .session-date {
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary);
             margin-bottom: 5px;
+            transition: color 0.3s ease;
         }
 
         .session-time {
-            color: #6c757d;
+            color: var(--text-secondary);
             font-size: 0.9em;
+            transition: color 0.3s ease;
         }
 
         .session-actions {
@@ -381,12 +501,18 @@
             font-weight: bold;
             color: #667eea;
             font-family: 'Courier New', monospace;
+            transition: color 0.3s ease;
+        }
+
+        [data-theme="dark"] .session-duration {
+            color: #8fa3ff;
         }
 
         .empty-state {
             text-align: center;
             padding: 40px;
-            color: #6c757d;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
         }
 
         .empty-state-icon {
@@ -402,11 +528,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: var(--modal-bg);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             animation: fadeIn 0.3s ease;
+            transition: background 0.3s ease;
         }
 
         .modal.active {
@@ -414,15 +541,16 @@
         }
 
         .modal-content {
-            background: white;
+            background: var(--bg-primary);
             padding: 30px;
             border-radius: 20px;
             max-width: 500px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px var(--shadow-color);
             animation: slideUp 0.3s ease;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
 
         @keyframes slideUp {
@@ -444,15 +572,16 @@
         }
 
         .modal-header h2 {
-            color: #333;
+            color: var(--text-primary);
             font-size: 1.5em;
+            transition: color 0.3s ease;
         }
 
         .modal-close {
             background: none;
             border: none;
             font-size: 2em;
-            color: #6c757d;
+            color: var(--text-secondary);
             cursor: pointer;
             padding: 0;
             width: 30px;
@@ -465,8 +594,8 @@
         }
 
         .modal-close:hover {
-            background: #f8f9fa;
-            color: #333;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
         }
 
         .modal-body {
@@ -530,17 +659,17 @@
         }
 
         .session-list::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: var(--scrollbar-track);
             border-radius: 10px;
         }
 
         .session-list::-webkit-scrollbar-thumb {
-            background: #667eea;
+            background: var(--scrollbar-thumb);
             border-radius: 10px;
         }
 
         .session-list::-webkit-scrollbar-thumb:hover {
-            background: #764ba2;
+            background: var(--scrollbar-thumb-hover);
         }
     </style>
 </head>
@@ -548,8 +677,11 @@
     <!-- Login Screen -->
     <div class="container">
         <div class="login-screen" id="loginScreen">
+            <button class="login-theme-toggle" id="loginThemeToggle" onclick="toggleTheme()" title="החלף ערכת נושא">
+                <span id="themeIcon">🌙</span>
+            </button>
             <div class="login-form">
-                <h1 style="color: #667eea; margin-bottom: 30px; font-size: 2em;">🕐 דיווח שעות עבודה</h1>
+                <h1 class="login-title" style="margin-bottom: 30px; font-size: 2em;">🕐 דיווח שעות עבודה</h1>
                 <div class="login-tabs">
                     <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">התחברות</button>
                     <button class="tab-btn" id="registerTab" onclick="switchTab('register')">הרשמה</button>
@@ -591,6 +723,9 @@
                     <span id="userDisplayName"></span>
                     <button class="btn-logout" onclick="logout()">התנתק</button>
                 </div>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="החלף ערכת נושא">
+                    <span id="themeIconMain">🌙</span>
+                </button>
                 <h1>🕐 דיווח שעות עבודה מהבית</h1>
                 <p>נהל את שעות העבודה שלך בקלות</p>
             </div>
@@ -668,7 +803,32 @@
 
         // Initialize
         function init() {
+            loadTheme();
             checkAuth();
+        }
+
+        // Theme Functions
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            const icons = document.querySelectorAll('#themeIcon, #themeIconMain');
+            icons.forEach(icon => {
+                if (icon) {
+                    icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+                }
+            });
         }
 
         // Authentication Functions
