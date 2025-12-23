@@ -1,0 +1,48 @@
+---
+name: documentation
+description: Documentation standards and structure guidelines
+---
+
+# Rule: documentation (Cursor)
+
+Self-contained rule; defines documentation standards for projects.
+
+## Location and format
+
+- All documentation must be stored under `[project-root]/docs/`.
+- All documentation files must use the `*.md` (Markdown) format.
+
+## Required documentation
+
+Every project must include:
+
+- **High-level design/planning document**: A planning or design document that provides an overview of the project, its architecture, goals, and current state. This document should be updated as the project evolves.
+- **`quick-start.md`**: A guide explaining how to install and run the project locally on both Linux and Windows environments. Include prerequisites, installation steps, configuration, and how to verify the setup works.
+
+## Feature documentation
+
+When developing new features:
+
+- **Planning document**: Each new feature must be added to the planning document with its current status (e.g., planned, in-progress, completed).
+- **Feature documentation file**: Each feature must have its own documentation file named `feature-[feature-name].md` in the `docs/` directory. This file should describe what the feature does, how it works (high-level), how to use it, any configuration or dependencies required, and examples if applicable.
+
+## Maintenance
+
+- Update the planning document when feature status changes.
+- Keep feature documentation files current as features evolve.
+- Update `quick-start.md` when installation or setup requirements change.
+
+## Guidance
+
+- Documentation should be clear, concise, and focused on helping developers understand and work with the project.
+- Use consistent formatting and structure across all documentation files.
+- Link between related documentation files when helpful.
+- Keep documentation close to the code it describes (in `docs/` at project root).
+
+## Out of scope
+
+- API documentation generated from code annotations (handled separately if needed).
+- Inline code comments (covered by code style guidelines).
+- README.md at project root (may follow different conventions).
+- Auto-generated documentation from code.
+

@@ -1,0 +1,39 @@
+---
+name: unit-test
+description: Unit testing and static analysis guidelines
+---
+
+# Rule: unit-test (Cursor)
+
+Self-contained rule; supersedes prior testing guidance. Focus on unit tests and static analysis; integration/E2E are out of scope here.
+
+## Scope and expectations
+- Every new feature must include corresponding unit tests before the feature is considered done.
+- When finishing a feature, report the overall unit test pass rate; all existing tests must still pass (no regressions).
+- Default runs should be fast; defer slow/external testing to other rules.
+
+## Layout
+- Top-level `tests/` directory with component subfolders aligned to `src/`, e.g.:
+  - `tests/web-be/`, `tests/web-fe/`, `tests/scraper/`, `tests/llm/`, etc.
+- Fixtures (if needed) under `tests/fixtures/` (per component is fine), kept small.
+
+## Naming
+- Prefix test files with `test_`, e.g. `test_auth.py`, `test_api.ts`, `test_utils.js`.
+
+## Running tests
+- Provide a single command to run unit tests; default run should execute only fast unit tests.
+
+## Static analysis
+- Require formatting plus linting/type-checking appropriate to the stack, with config in the repo (e.g., `pyproject.toml`, `.eslintrc`, `tsconfig.json`).
+- At least one linter must run in CI (formatting encouraged). Pre-commit hooks optional but recommended.
+
+## Environment & secrets
+- Tests must not log secrets; load env/config only via test-safe mechanisms.
+
+## Flakiness
+- No slow/external markers required here. If tests become flaky, fix or quarantine and track a follow-up.
+
+## Out of scope
+- Integration, E2E, or slow/external test policies.
+
+

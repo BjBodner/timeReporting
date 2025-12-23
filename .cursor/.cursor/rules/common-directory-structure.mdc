@@ -1,0 +1,37 @@
+---
+name: common-directory-structure
+description: Standard project directory layout
+---
+
+# Rule: common-directory-structure (Cursor)
+
+Self-contained rule; supersedes the older `dir-structure` guidance.
+
+## Top-level files
+- `.env`: environment variables sourced at startup (if needed).
+- `run.sh`: simple shell script to run the project (if applicable).
+- `config.json`: user configuration for the program (if applicable).
+
+## Standard directories
+- `docs/`: project documentation and readme-style markdown.
+- `aws-deployment/`: AWS setup/deploy assets (e.g., eventbridge, iam-*, setup guides).
+- `data/`: databases, runtime files, persistence.
+- `src/`: source code (see component layout below).
+- `log/`: logs.
+
+## Component layout inside `src/`
+If the project has multiple functions/components (e.g., web frontend, web backend, scraper, LLM service), place each under its own directory:
+- `src/web-fe/`
+- `src/web-be/`
+- `src/scraper/`
+- `src/llm/`
+- ...etc.
+
+This keeps navigation clear and makes it easy to find each component.
+
+## Guidance
+- Only create files/directories when needed by the project.
+- Keep tool-specific items in their respective `.cursor/`, `.claude/`, `.vscode/` folders when applicable.
+- This rule supersedes the older `dir-structure` guidance.
+
+
