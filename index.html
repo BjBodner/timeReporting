@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>דיווח שעות עבודה מהבית</title>
     <style>
+        :root {
+            --bg-primary: white;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #e9ecef;
+            --text-primary: #333;
+            --text-secondary: #6c757d;
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --body-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1e1e2e;
+            --bg-secondary: #2d2d44;
+            --bg-tertiary: #3d3d5c;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border-color: #3d3d5c;
+            --shadow-color: rgba(0, 0, 0, 0.6);
+            --body-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,20 +35,22 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--body-gradient);
             min-height: 100vh;
             padding: 20px;
             direction: rtl;
+            transition: background 0.3s ease;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
+            background: var(--bg-primary);
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px var(--shadow-color);
             overflow: hidden;
             animation: fadeIn 0.5s ease-in;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
 
         @keyframes fadeIn {
@@ -70,6 +94,24 @@
 
         .user-info span {
             opacity: 0.9;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .btn-logout {
@@ -118,9 +160,9 @@
         .tab-btn {
             padding: 12px 30px;
             font-size: 1em;
-            background: #f8f9fa;
+            background: var(--bg-secondary);
             color: #667eea;
-            border: 2px solid #e9ecef;
+            border: 2px solid var(--border-color);
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -140,17 +182,20 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: #333;
+            color: var(--text-primary);
             font-weight: 600;
+            transition: color 0.3s ease;
         }
 
         .form-group input {
             width: 100%;
             padding: 12px 15px;
             font-size: 1em;
-            border: 2px solid #e9ecef;
+            border: 2px solid var(--border-color);
             border-radius: 10px;
             transition: all 0.3s ease;
+            background: var(--bg-primary);
+            color: var(--text-primary);
         }
 
         .form-group input:focus {
@@ -295,12 +340,12 @@
         }
 
         .stat-card {
-            background: #f8f9fa;
+            background: var(--bg-secondary);
             padding: 20px;
             border-radius: 15px;
             text-align: center;
-            border: 2px solid #e9ecef;
-            transition: transform 0.3s ease;
+            border: 2px solid var(--border-color);
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
         }
 
         .stat-card:hover {
@@ -309,8 +354,9 @@
 
         .stat-label {
             font-size: 0.9em;
-            color: #6c757d;
+            color: var(--text-secondary);
             margin-bottom: 10px;
+            transition: color 0.3s ease;
         }
 
         .stat-value {
@@ -324,9 +370,10 @@
         }
 
         .sessions h2 {
-            color: #333;
+            color: var(--text-primary);
             margin-bottom: 20px;
             font-size: 1.5em;
+            transition: color 0.3s ease;
         }
 
         .session-list {
@@ -335,7 +382,7 @@
         }
 
         .session-item {
-            background: #f8f9fa;
+            background: var(--bg-secondary);
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 15px;
@@ -343,11 +390,11 @@
             justify-content: space-between;
             align-items: center;
             border-right: 4px solid #667eea;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease, background 0.3s ease;
         }
 
         .session-item:hover {
-            background: #e9ecef;
+            background: var(--bg-tertiary);
             transform: translateX(-5px);
         }
 
@@ -361,13 +408,15 @@
 
         .session-date {
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary);
             margin-bottom: 5px;
+            transition: color 0.3s ease;
         }
 
         .session-time {
-            color: #6c757d;
+            color: var(--text-secondary);
             font-size: 0.9em;
+            transition: color 0.3s ease;
         }
 
         .session-actions {
@@ -386,7 +435,8 @@
         .empty-state {
             text-align: center;
             padding: 40px;
-            color: #6c757d;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
         }
 
         .empty-state-icon {
@@ -402,11 +452,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             animation: fadeIn 0.3s ease;
+        }
+
+        [data-theme="dark"] .modal {
+            background: rgba(0, 0, 0, 0.85);
         }
 
         .modal.active {
@@ -414,15 +468,16 @@
         }
 
         .modal-content {
-            background: white;
+            background: var(--bg-primary);
             padding: 30px;
             border-radius: 20px;
             max-width: 500px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px var(--shadow-color);
             animation: slideUp 0.3s ease;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
 
         @keyframes slideUp {
@@ -444,15 +499,16 @@
         }
 
         .modal-header h2 {
-            color: #333;
+            color: var(--text-primary);
             font-size: 1.5em;
+            transition: color 0.3s ease;
         }
 
         .modal-close {
             background: none;
             border: none;
             font-size: 2em;
-            color: #6c757d;
+            color: var(--text-secondary);
             cursor: pointer;
             padding: 0;
             width: 30px;
@@ -465,8 +521,8 @@
         }
 
         .modal-close:hover {
-            background: #f8f9fa;
-            color: #333;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
         }
 
         .modal-body {
@@ -530,7 +586,7 @@
         }
 
         .session-list::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: var(--bg-secondary);
             border-radius: 10px;
         }
 
@@ -542,12 +598,17 @@
         .session-list::-webkit-scrollbar-thumb:hover {
             background: #764ba2;
         }
+
+        [data-theme="dark"] .login-screen h1 {
+            color: #667eea;
+        }
     </style>
 </head>
 <body>
-    <!-- Login Screen -->
+        <!-- Login Screen -->
     <div class="container">
         <div class="login-screen" id="loginScreen">
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeToggleLogin" title="החלף נושא" style="position: absolute; top: 20px; left: 20px;">🌙</button>
             <div class="login-form">
                 <h1 style="color: #667eea; margin-bottom: 30px; font-size: 2em;">🕐 דיווח שעות עבודה</h1>
                 <div class="login-tabs">
@@ -591,6 +652,7 @@
                     <span id="userDisplayName"></span>
                     <button class="btn-logout" onclick="logout()">התנתק</button>
                 </div>
+                <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" title="החלף נושא">🌙</button>
                 <h1>🕐 דיווח שעות עבודה מהבית</h1>
                 <p>נהל את שעות העבודה שלך בקלות</p>
             </div>
@@ -668,7 +730,35 @@
 
         // Initialize
         function init() {
+            loadTheme();
             checkAuth();
+        }
+
+        // Theme Functions
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeToggle(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeToggle(newTheme);
+        }
+
+        function updateThemeToggle(theme) {
+            const themeToggle = document.getElementById('themeToggle');
+            const themeToggleLogin = document.getElementById('themeToggleLogin');
+            const icon = theme === 'dark' ? '☀️' : '🌙';
+            if (themeToggle) {
+                themeToggle.textContent = icon;
+            }
+            if (themeToggleLogin) {
+                themeToggleLogin.textContent = icon;
+            }
         }
 
         // Authentication Functions
@@ -785,6 +875,7 @@
         function showLoginScreen() {
             document.getElementById('loginScreen').classList.add('active');
             document.getElementById('mainContent').classList.remove('active');
+            updateThemeToggle(document.documentElement.getAttribute('data-theme') || 'light');
         }
 
         function showMainContent() {
@@ -794,6 +885,7 @@
             updateDisplay();
             renderSessions();
             updateStats();
+            updateThemeToggle(document.documentElement.getAttribute('data-theme') || 'light');
             
             // Check if there's an active session
             const activeSessionKey = `activeSession_${currentUser.username}`;
