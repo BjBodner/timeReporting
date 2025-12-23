@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
             min-height: 100vh;
             padding: 20px;
             direction: rtl;
@@ -22,9 +22,9 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
+            background: #1e1e2e;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             overflow: hidden;
             animation: fadeIn 0.5s ease-in;
         }
@@ -41,8 +41,8 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #2d2d44 0%, #3a3a52 100%);
+            color: #e0e0e0;
             padding: 30px;
             text-align: center;
             position: relative;
@@ -118,17 +118,17 @@
         .tab-btn {
             padding: 12px 30px;
             font-size: 1em;
-            background: #f8f9fa;
-            color: #667eea;
-            border: 2px solid #e9ecef;
+            background: #2a2a3e;
+            color: #a0a0c0;
+            border: 2px solid #3a3a52;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #4a5dc9 0%, #6b4ba2 100%);
+            color: #e0e0e0;
             border-color: transparent;
         }
 
@@ -140,7 +140,7 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: #333;
+            color: #c0c0d0;
             font-weight: 600;
         }
 
@@ -148,15 +148,17 @@
             width: 100%;
             padding: 12px 15px;
             font-size: 1em;
-            border: 2px solid #e9ecef;
+            border: 2px solid #3a3a52;
             border-radius: 10px;
             transition: all 0.3s ease;
+            background: #2a2a3e;
+            color: #e0e0e0;
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #5a6dc9;
+            box-shadow: 0 0 0 3px rgba(90, 109, 201, 0.2);
         }
 
         .error-message {
@@ -197,18 +199,18 @@
         }
 
         .status-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
+            background: linear-gradient(135deg, #8b3a9c 0%, #9d3a52 100%);
+            color: #e0e0e0;
             padding: 30px;
             border-radius: 15px;
             text-align: center;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
         }
 
         .status-card.active {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #2d6fa8 0%, #008b9d 100%);
         }
 
         .status-text {
@@ -253,30 +255,30 @@
         }
 
         .btn-start {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
+            background: linear-gradient(135deg, #0d7269 0%, #2db87d 100%);
+            color: #e0e0e0;
         }
 
         .btn-stop {
-            background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
-            color: white;
+            background: linear-gradient(135deg, #c2075a 0%, #d65500 100%);
+            color: #e0e0e0;
         }
 
         .btn-reset {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #4a5dc9 0%, #6b4ba2 100%);
+            color: #e0e0e0;
         }
 
         .btn-edit {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #4a5dc9 0%, #6b4ba2 100%);
+            color: #e0e0e0;
             padding: 8px 20px;
             font-size: 0.9em;
         }
 
         .btn-delete {
-            background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
-            color: white;
+            background: linear-gradient(135deg, #c2075a 0%, #d65500 100%);
+            color: #e0e0e0;
             padding: 8px 20px;
             font-size: 0.9em;
         }
@@ -295,11 +297,11 @@
         }
 
         .stat-card {
-            background: #f8f9fa;
+            background: #2a2a3e;
             padding: 20px;
             border-radius: 15px;
             text-align: center;
-            border: 2px solid #e9ecef;
+            border: 2px solid #3a3a52;
             transition: transform 0.3s ease;
         }
 
@@ -309,14 +311,14 @@
 
         .stat-label {
             font-size: 0.9em;
-            color: #6c757d;
+            color: #a0a0c0;
             margin-bottom: 10px;
         }
 
         .stat-value {
             font-size: 2em;
             font-weight: bold;
-            color: #667eea;
+            color: #6b8dd9;
         }
 
         .sessions {
@@ -324,7 +326,7 @@
         }
 
         .sessions h2 {
-            color: #333;
+            color: #e0e0e0;
             margin-bottom: 20px;
             font-size: 1.5em;
         }
@@ -335,24 +337,24 @@
         }
 
         .session-item {
-            background: #f8f9fa;
+            background: #2a2a3e;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-right: 4px solid #667eea;
+            border-right: 4px solid #5a6dc9;
             transition: all 0.3s ease;
         }
 
         .session-item:hover {
-            background: #e9ecef;
+            background: #353549;
             transform: translateX(-5px);
         }
 
         .session-item.edited {
-            border-right-color: #ffc107;
+            border-right-color: #d4a029;
         }
 
         .session-info {
@@ -361,12 +363,12 @@
 
         .session-date {
             font-weight: 600;
-            color: #333;
+            color: #e0e0e0;
             margin-bottom: 5px;
         }
 
         .session-time {
-            color: #6c757d;
+            color: #a0a0c0;
             font-size: 0.9em;
         }
 
@@ -379,14 +381,14 @@
         .session-duration {
             font-size: 1.3em;
             font-weight: bold;
-            color: #667eea;
+            color: #6b8dd9;
             font-family: 'Courier New', monospace;
         }
 
         .empty-state {
             text-align: center;
             padding: 40px;
-            color: #6c757d;
+            color: #a0a0c0;
         }
 
         .empty-state-icon {
@@ -402,7 +404,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -414,14 +416,14 @@
         }
 
         .modal-content {
-            background: white;
+            background: #1e1e2e;
             padding: 30px;
             border-radius: 20px;
             max-width: 500px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             animation: slideUp 0.3s ease;
         }
 
@@ -444,7 +446,7 @@
         }
 
         .modal-header h2 {
-            color: #333;
+            color: #e0e0e0;
             font-size: 1.5em;
         }
 
@@ -452,7 +454,7 @@
             background: none;
             border: none;
             font-size: 2em;
-            color: #6c757d;
+            color: #a0a0c0;
             cursor: pointer;
             padding: 0;
             width: 30px;
@@ -465,8 +467,8 @@
         }
 
         .modal-close:hover {
-            background: #f8f9fa;
-            color: #333;
+            background: #2a2a3e;
+            color: #e0e0e0;
         }
 
         .modal-body {
@@ -480,13 +482,13 @@
         }
 
         .btn-cancel {
-            background: #6c757d;
-            color: white;
+            background: #4a4a5e;
+            color: #e0e0e0;
         }
 
         .btn-save {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
+            background: linear-gradient(135deg, #0d7269 0%, #2db87d 100%);
+            color: #e0e0e0;
         }
 
         @media (max-width: 600px) {
@@ -530,17 +532,17 @@
         }
 
         .session-list::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #2a2a3e;
             border-radius: 10px;
         }
 
         .session-list::-webkit-scrollbar-thumb {
-            background: #667eea;
+            background: #5a6dc9;
             border-radius: 10px;
         }
 
         .session-list::-webkit-scrollbar-thumb:hover {
-            background: #764ba2;
+            background: #6b4ba2;
         }
     </style>
 </head>
@@ -549,7 +551,7 @@
     <div class="container">
         <div class="login-screen" id="loginScreen">
             <div class="login-form">
-                <h1 style="color: #667eea; margin-bottom: 30px; font-size: 2em;">🕐 דיווח שעות עבודה</h1>
+                <h1 style="color: #6b8dd9; margin-bottom: 30px; font-size: 2em;">🕐 דיווח שעות עבודה</h1>
                 <div class="login-tabs">
                     <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">התחברות</button>
                     <button class="tab-btn" id="registerTab" onclick="switchTab('register')">הרשמה</button>
