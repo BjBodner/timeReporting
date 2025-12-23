@@ -11,22 +11,58 @@
             box-sizing: border-box;
         }
 
+        :root {
+            color-scheme: dark;
+
+            /* Base surfaces */
+            --bg0: #0b1020;
+            --bg1: #0f1630;
+            --surface: rgba(18, 26, 50, 0.92);
+            --surface-solid: #121a32;
+            --surface-2: rgba(255, 255, 255, 0.06);
+            --surface-3: rgba(255, 255, 255, 0.10);
+
+            /* Text */
+            --text: #e7eaff;
+            --text-muted: rgba(231, 234, 255, 0.72);
+            --text-dim: rgba(231, 234, 255, 0.55);
+
+            /* Borders / shadows */
+            --border: rgba(231, 234, 255, 0.14);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+
+            /* Brand */
+            --accent: #8ea2ff;
+            --accent-2: #a78bfa;
+            --focus: rgba(142, 162, 255, 0.35);
+
+            /* Status */
+            --danger: #ff6b7a;
+            --success: #4ade80;
+            --warning: #fbbf24;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: radial-gradient(1200px 800px at 20% 10%, rgba(103, 126, 234, 0.25), transparent 60%),
+                        radial-gradient(1000px 700px at 85% 20%, rgba(118, 75, 162, 0.22), transparent 55%),
+                        linear-gradient(135deg, var(--bg0) 0%, var(--bg1) 100%);
             min-height: 100vh;
             padding: 20px;
             direction: rtl;
+            color: var(--text);
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
+            background: var(--surface);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow);
             overflow: hidden;
             animation: fadeIn 0.5s ease-in;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         @keyframes fadeIn {
@@ -41,7 +77,8 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: radial-gradient(1000px 500px at 15% 20%, rgba(142, 162, 255, 0.30), transparent 55%),
+                        linear-gradient(135deg, #3d4bd6 0%, #5b2f9a 100%);
             color: white;
             padding: 30px;
             text-align: center;
@@ -108,6 +145,13 @@
             margin: 0 auto;
         }
 
+        .login-title {
+            color: var(--text);
+            margin-bottom: 30px;
+            font-size: 2em;
+            letter-spacing: 0.2px;
+        }
+
         .login-tabs {
             display: flex;
             gap: 10px;
@@ -118,16 +162,16 @@
         .tab-btn {
             padding: 12px 30px;
             font-size: 1em;
-            background: #f8f9fa;
-            color: #667eea;
-            border: 2px solid #e9ecef;
+            background: var(--surface-2);
+            color: var(--accent);
+            border: 2px solid var(--border);
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3d4bd6 0%, #5b2f9a 100%);
             color: white;
             border-color: transparent;
         }
@@ -140,7 +184,7 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: #333;
+            color: var(--text);
             font-weight: 600;
         }
 
@@ -148,19 +192,25 @@
             width: 100%;
             padding: 12px 15px;
             font-size: 1em;
-            border: 2px solid #e9ecef;
+            border: 2px solid var(--border);
             border-radius: 10px;
             transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.18);
+            color: var(--text);
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: rgba(142, 162, 255, 0.8);
+            box-shadow: 0 0 0 4px var(--focus);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-dim);
         }
 
         .error-message {
-            color: #dc3545;
+            color: var(--danger);
             font-size: 0.9em;
             margin-top: 5px;
             display: none;
@@ -178,7 +228,7 @@
         }
 
         .success-message {
-            color: #28a745;
+            color: var(--success);
             font-size: 0.9em;
             margin-top: 5px;
             display: none;
@@ -252,6 +302,11 @@
             transform: translateY(0);
         }
 
+        button:focus-visible {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px;
+        }
+
         .btn-start {
             background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white;
@@ -295,11 +350,11 @@
         }
 
         .stat-card {
-            background: #f8f9fa;
+            background: var(--surface-2);
             padding: 20px;
             border-radius: 15px;
             text-align: center;
-            border: 2px solid #e9ecef;
+            border: 2px solid var(--border);
             transition: transform 0.3s ease;
         }
 
@@ -309,14 +364,14 @@
 
         .stat-label {
             font-size: 0.9em;
-            color: #6c757d;
+            color: var(--text-muted);
             margin-bottom: 10px;
         }
 
         .stat-value {
             font-size: 2em;
             font-weight: bold;
-            color: #667eea;
+            color: var(--accent);
         }
 
         .sessions {
@@ -324,7 +379,7 @@
         }
 
         .sessions h2 {
-            color: #333;
+            color: var(--text);
             margin-bottom: 20px;
             font-size: 1.5em;
         }
@@ -335,24 +390,24 @@
         }
 
         .session-item {
-            background: #f8f9fa;
+            background: var(--surface-2);
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-right: 4px solid #667eea;
+            border-right: 4px solid var(--accent);
             transition: all 0.3s ease;
         }
 
         .session-item:hover {
-            background: #e9ecef;
+            background: var(--surface-3);
             transform: translateX(-5px);
         }
 
         .session-item.edited {
-            border-right-color: #ffc107;
+            border-right-color: var(--warning);
         }
 
         .session-info {
@@ -361,12 +416,12 @@
 
         .session-date {
             font-weight: 600;
-            color: #333;
+            color: var(--text);
             margin-bottom: 5px;
         }
 
         .session-time {
-            color: #6c757d;
+            color: var(--text-muted);
             font-size: 0.9em;
         }
 
@@ -379,14 +434,14 @@
         .session-duration {
             font-size: 1.3em;
             font-weight: bold;
-            color: #667eea;
+            color: var(--accent);
             font-family: 'Courier New', monospace;
         }
 
         .empty-state {
             text-align: center;
             padding: 40px;
-            color: #6c757d;
+            color: var(--text-muted);
         }
 
         .empty-state-icon {
@@ -414,15 +469,16 @@
         }
 
         .modal-content {
-            background: white;
+            background: var(--surface-solid);
             padding: 30px;
             border-radius: 20px;
             max-width: 500px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow);
             animation: slideUp 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.10);
         }
 
         @keyframes slideUp {
@@ -444,7 +500,7 @@
         }
 
         .modal-header h2 {
-            color: #333;
+            color: var(--text);
             font-size: 1.5em;
         }
 
@@ -452,7 +508,7 @@
             background: none;
             border: none;
             font-size: 2em;
-            color: #6c757d;
+            color: var(--text-dim);
             cursor: pointer;
             padding: 0;
             width: 30px;
@@ -465,8 +521,8 @@
         }
 
         .modal-close:hover {
-            background: #f8f9fa;
-            color: #333;
+            background: var(--surface-2);
+            color: var(--text);
         }
 
         .modal-body {
@@ -480,7 +536,7 @@
         }
 
         .btn-cancel {
-            background: #6c757d;
+            background: rgba(255, 255, 255, 0.16);
             color: white;
         }
 
@@ -530,17 +586,17 @@
         }
 
         .session-list::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: var(--surface-2);
             border-radius: 10px;
         }
 
         .session-list::-webkit-scrollbar-thumb {
-            background: #667eea;
+            background: rgba(142, 162, 255, 0.7);
             border-radius: 10px;
         }
 
         .session-list::-webkit-scrollbar-thumb:hover {
-            background: #764ba2;
+            background: rgba(167, 139, 250, 0.8);
         }
     </style>
 </head>
@@ -549,7 +605,7 @@
     <div class="container">
         <div class="login-screen" id="loginScreen">
             <div class="login-form">
-                <h1 style="color: #667eea; margin-bottom: 30px; font-size: 2em;">🕐 דיווח שעות עבודה</h1>
+                <h1 class="login-title">🕐 דיווח שעות עבודה</h1>
                 <div class="login-tabs">
                     <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">התחברות</button>
                     <button class="tab-btn" id="registerTab" onclick="switchTab('register')">הרשמה</button>
